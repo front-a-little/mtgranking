@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<h2>Matches</h2>
+<table class="table table-hover" ng-controller="MtgMatchController">
+	<thead>
+		<tr>
+			<th>Match at</th>
+			<th>Player One</th>
+			<th>Player Two</th>
+			<th>Winner</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="match in matches">
+			<td>{{parseTimeStamp(match.timestamp)}}</td>
+			<td>
+				{{match.player1.firstname}} {{match.player1.lastname}}
+				<span ng-show="match.player1.deck">
+					<span class="glyphicon glyphicon-stop" ng-repeat="color in match.player1.deck" ng-class="color"></span>
+				</span>
+			</td>
+			<td>
+				{{match.player2.firstname}} {{match.player2.lastname}}
+				<span ng-show="match.player2.deck">
+					<span class="glyphicon glyphicon-stop" ng-repeat="color in match.player2.deck" ng-class="color"></span>
+				</span>
+			</td>
+			<td>
+				{{match.winner.firstname}} {{match.winner.lastname}}
+				<span ng-show="match.winner.deck">
+					<span class="glyphicon glyphicon-stop" ng-repeat="color in match.winner.deck" ng-class="color"></span>
+				</span>
+			</td>
+		</tr>
+	</tbody>
+</table>

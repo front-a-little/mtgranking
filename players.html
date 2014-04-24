@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<form role="form" class="form-inline" name="addPlayer">
+	<h2>Add Player</h2>
+	<div class="form-group">
+		<label for="playerFirstName" class="sr-only">Firstname</label> <input
+			id="playerFirstName" type="text" class="form-control"
+			placeholder="Firstname" ng-model="form.firstname" />
+	</div>
+	<div class="form-group">
+		<label for="playerLastName" class="sr-only">Lastname</label> <input
+			id="playerLastName" type="text" class="form-control"
+			placeholder="Lastname" ng-model="form.lastname" />
+	</div>
+	<button type="submit" class="btn btn-success" ng-click="submit()">Submit</button>
+	<p class="bg-warning text-warning" ng-show="messages"
+		ng-bind="messages"></p>
+</form>
+<h2>Players</h2>
+<input type="text" class="form-control" ng-model="search">
+<ul class="list-group">
+	<li class="list-group-item"
+		ng-repeat="player in players | orderBy:'wins':true | filter:search">
+		
+		<span class="badge">
+			{{player.wins}}
+			<ng-pluralize count="player.wins"
+				when="{'0': ' wins',
+					'one': ' win',
+					'other': ' wins'}">
+			</ng-pluralize>
+		</span>
+		{{player.firstname}} {{player.lastname}}
+	</li>
+</ul>
